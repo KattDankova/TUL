@@ -28,29 +28,29 @@ while (opakovani == "a")
 
     int[] pole = new int[n];
     int[] pole1 = new int[n];
+    int[] pole2 = new int[n];
     Random nahodne = new Random();
 
     for (int i = 0; i < n; i++)
     {
-        pole1[i] = pole[i] = nahodne.Next(dm, hm + 1);
+        pole2[i] = pole1[i] = pole[i] = nahodne.Next(dm, hm + 1);
         Console.Write("{0}; ", pole[i]);
     }
-
 
     // Bubble sort
     int pocetVymenB = 0;
     Stopwatch stopky = new Stopwatch();
     stopky.Start();
+    int delkaB = pole.Length;
     for (int i = 0; i < n - 1; i++)
         for (int j = 0; j < n - i - 1; j++)
-            if (pole[j] < pole[j + 1])
+            if (pole[j] > pole[j + 1])
             {
-                int pom = pole[j + 1];
-                pole[j + 1] = pole[j];
-                pole[j] = pom;
+                int temp = pole[j];
+                pole[j] = pole[j + 1];
+                pole[j + 1] = temp;
                 pocetVymenB++;
             }
-
 
     stopky.Stop();
 
@@ -61,31 +61,33 @@ while (opakovani == "a")
     Console.WriteLine("\n\nČas řazení (Bubble sort): {0}", stopky.Elapsed);
     Console.WriteLine("\n\n==============================================");
 
-    // Insertion sort
-    int pocetVymenI = 0;
+    //Insertion sort
     Stopwatch stopky1 = new Stopwatch();
     Console.WriteLine("\n\nNeseřazené pole1 (před Insertion sortem): ");
 
     for (int i = 0; i < n; i++)
         Console.Write("{0}; ", pole1[i]);
-
-
-
     stopky1.Start();
-    for (int i = 0; i < pole1.Length - 1; i++)
-    {
-        int j = i + 1;
-        int pom = pole1[j];
-        while (j > 0 && pom > pole1[j - 1])
-        {
-            pole1[j] = pole1[j - 1];
-            j--;
 
+    int delka = pole1.Length;
+    int pocetPorovnani = 0;
+    int pocetVymenI = 0;
+
+    for (int i = 0; i < delka - 1; i++)
+    {
+        int min = i;
+        for (int j = i + 1; j < delka; j++)
+        {
+            pocetPorovnani++;
+            if (pole1[j] < pole1[min])
+                min = j;
         }
-        pole1[j] = pom;
+
+        int temp = pole1[min];
+        pole1[min] = pole1[i];
+        pole1[i] = temp;
         pocetVymenI++;
     }
-
 
     stopky1.Stop();
 
@@ -97,16 +99,59 @@ while (opakovani == "a")
     Console.WriteLine("\n\nČas řazení (Insertion): {0}", stopky1.Elapsed);
     Console.WriteLine("\n\n==============================================");
     Console.WriteLine("==============================================");
+
+    //Selection sort
+    Stopwatch stopky2 = new Stopwatch();
+    Console.WriteLine("\n\nNeseřazené pole1 (před Insertion sortem): ");
+
+    for (int i = 0; i < n; i++)
+        Console.Write("{0}; ", pole2[i]);
+    stopky2.Start();
+
+    int delkaS = pole2.Length;
+    int pocetPorovnaniS = 0;
+    int pocetVymenS = 0;
+
+    for (int i = 0; i < delkaS - 1; i++)
+    {
+        int index = i;
+        for (int j = i + 1; j < delkaS; j++)
+        {
+            pocetPorovnaniS++;
+            if (pole2[j] < pole2[index])
+            {
+                index = j;
+            }
+        }
+
+        int temp = pole2[index];
+        pole2[index] = pole2[i];
+        pole2[i] = temp;
+        pocetVymenS++;
+    }
+
+    stopky2.Stop();
+    Console.WriteLine("\n\nSeřazené pole (Selection sort): ");
+
+    for (int i = 0; i < n; i++)
+        Console.Write("{0}; ", pole2[i]);
+
+    Console.WriteLine("\n\nČas řazení (Selection): {0}", stopky2.Elapsed);
+    Console.WriteLine("\n\n==============================================");
+    Console.WriteLine("==============================================");
+
+
     Console.ForegroundColor = ConsoleColor.Magenta;
     Console.WriteLine("\n\nČas řazení (Bubble sort): {0}", stopky.Elapsed);
     Console.WriteLine("Počet výměn (Bubble sort): {0}", pocetVymenB);
-
 
     Console.ForegroundColor = ConsoleColor.Green;
     Console.WriteLine("\nČas řazení (Insertion sort): {0}", stopky1.Elapsed);
     Console.WriteLine("Počet výměn (Insertion sort): {0}", pocetVymenI);
 
-
+    Console.ForegroundColor = ConsoleColor.Blue;
+    Console.WriteLine("\nČas řazení (Selection sort): {0}", stopky2.Elapsed);
+    Console.WriteLine("Počet výměn (Selection sort): {0}", pocetVymenS);
 
     Console.ForegroundColor = ConsoleColor.White;
     Console.WriteLine("\n\nPro opakování programu stiskněte klávesu a");
