@@ -212,6 +212,26 @@ for (int i = 0; i < vyska; i++)
     Console.Write("\n");
 }
 
+//12
+leva = true;
+Console.WriteLine("\n(12)");
+for (int i = 0; i < vyska; i++)
+{
+    for (int j = 0; j < sirka; j++)
+    {
+        if ((leva && i % 2 == 0 && j % 2 != 0) || (!leva && j % 2 == 0))
+        {
+            Console.Write("*");
+        }
+        else
+        {
+            Console.Write(" ");
+        }
+    }
+    leva = !leva;
+    Console.Write("\n");
+}
+
 //14
 Console.WriteLine("\n(14)");
 for (int i = 0; i < vyska; i++)
