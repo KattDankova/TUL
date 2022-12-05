@@ -1,5 +1,5 @@
-﻿int sirka = 8;
-int vyska = 8;
+﻿int sirka = 16;
+int vyska = 16;
 bool leva = true;
 
 Console.WriteLine("\n");
@@ -232,6 +232,25 @@ for (int i = 0; i < vyska; i++)
     Console.Write("\n");
 }
 
+//13
+Console.WriteLine("\n(13)");
+for (int i = 0; i < vyska; i++)
+{
+    for (int j = 0; j < sirka; j++)
+    {
+        if (i < vyska / 2 && j < sirka / 2 && (i == 0 || i == vyska / 2 - 1 || j == 0 || j == sirka / 2 - 1)
+            || i >= vyska / 2 && j >= sirka / 2 && (i == vyska / 2 || i == vyska - 1 || j == sirka / 2 || j == sirka - 1))
+        {
+            Console.Write("*");
+        }
+        else
+        {
+            Console.Write(" ");
+        }
+    }
+    Console.Write("\n");
+}
+
 //14
 Console.WriteLine("\n(14)");
 for (int i = 0; i < vyska; i++)
@@ -249,3 +268,42 @@ for (int i = 0; i < vyska; i++)
     }
     Console.Write("\n");
 }
+
+//15
+Console.WriteLine("\n(15)");
+for (int i = 0; i < vyska; i++)
+{
+    for (int j = 0; j < sirka; j++)
+    {
+        if (i == vyska / 2 - j - 1 || i == vyska / 2 + j || j == sirka / 2 + i || j == sirka - i + sirka / 2 -1)
+        {
+            Console.Write("*");
+        }
+        else
+        {
+            Console.Write(" ");
+        }
+    }
+    Console.Write("\n");
+}
+
+//16
+Console.WriteLine("\n(16)");
+for (int i = 0; i < vyska; i++)
+{
+    for (int j = 0; j < sirka; j++)
+    {
+        if (i <= vyska / 2 && j >= sirka / 2 - i - 1 && j <= sirka / 2 + i ||
+            i > vyska / 2 && j <= vyska - i + vyska / 2 - 1 && i <= vyska / 2 + j)
+        {
+            Console.Write("*");
+        }
+        else
+        {
+            Console.Write(" ");
+        }
+    }
+    Console.Write("\n");
+}
+
+//17
