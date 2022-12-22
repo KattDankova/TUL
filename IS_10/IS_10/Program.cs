@@ -1,5 +1,4 @@
-﻿// zadat číslo - velikost pole - do něj ukládat čísla a pro všechny prvky v poli společný dělitel, násobek
-var key = ConsoleKey.Enter;
+﻿var key = ConsoleKey.Enter;
 while (key == ConsoleKey.Enter)
 {
     Console.Clear();
