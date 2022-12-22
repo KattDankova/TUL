@@ -1,6 +1,6 @@
 ﻿int sirka = 8;
 int vyska = 8;
-bool leva = true;
+bool b = true; // pomocná proměnná b jako bool
 
 Console.WriteLine("\n");
 
@@ -167,13 +167,13 @@ for (int i = 0; i < vyska; i++)
 }
 
 //10
-leva = true;
+b = true;
 Console.WriteLine("\n(10)");
 for (int i = 0; i < vyska; i++)
 {
     for (int j = 0; j < sirka; j++)
     {
-        if (i % 2 == 0 || (leva && j == 0 || !leva && j == sirka - 1))
+        if (i % 2 == 0 || (b && j == 0 || !b && j == sirka - 1))
         {
             Console.Write("*");
         }
@@ -184,19 +184,19 @@ for (int i = 0; i < vyska; i++)
     }
     if (i % 2 == 0)
     {
-        leva = !leva;
+        b = !b;
     }
     Console.Write("\n");
 }
 
 //11
-leva = true;
+b = true;
 Console.WriteLine("\n(11)");
 for (int i = 0; i < vyska; i++)
 {
     for (int j = 0; j < sirka; j++)
     {
-        if (j % 2 == 0 || (leva && i == 0 || !leva && i == sirka - 1))
+        if (j % 2 == 0 || (b && i == 0 || !b && i == sirka - 1))
         {
             Console.Write("*");
         }
@@ -206,20 +206,20 @@ for (int i = 0; i < vyska; i++)
         }
         if (j % 2 == 0)
         {
-            leva = !leva;
+            b = !b;
         }
     }
     Console.Write("\n");
 }
 
 //12
-leva = true;
+b = true;
 Console.WriteLine("\n(12)");
 for (int i = 0; i < vyska; i++)
 {
     for (int j = 0; j < sirka; j++)
     {
-        if ((leva && i % 2 == 0 && j % 2 != 0) || (!leva && j % 2 == 0))
+        if ((b && i % 2 == 0 && j % 2 != 0) || (!b && j % 2 == 0))
         {
             Console.Write("*");
         }
@@ -228,7 +228,26 @@ for (int i = 0; i < vyska; i++)
             Console.Write(" ");
         }
     }
-    leva = !leva;
+    b = !b;
+    Console.Write("\n");
+}
+
+//13
+Console.WriteLine("\n(13)");
+for (int i = 0; i < vyska; i++)
+{
+    for (int j = 0; j < sirka; j++)
+    {
+        if (i < vyska / 2 && j < sirka / 2 && (i == 0 || i == vyska / 2 - 1 || j == 0 || j == sirka / 2 - 1)
+            || i >= vyska / 2 && j >= sirka / 2 && (i == vyska / 2 || i == vyska - 1 || j == sirka / 2 || j == sirka - 1))
+        {
+            Console.Write("*");
+        }
+        else
+        {
+            Console.Write(" ");
+        }
+    }
     Console.Write("\n");
 }
 
@@ -246,6 +265,134 @@ for (int i = 0; i < vyska; i++)
         {
             Console.Write("*");
         }
+    }
+    Console.Write("\n");
+}
+
+//15
+Console.WriteLine("\n(15)");
+for (int i = 0; i < vyska; i++)
+{
+    for (int j = 0; j < sirka; j++)
+    {
+        if (i == vyska / 2 - j - 1 || i == vyska / 2 + j || j == sirka / 2 + i || j == sirka - i + sirka / 2 - 1)
+        {
+            Console.Write("*");
+        }
+        else
+        {
+            Console.Write(" ");
+        }
+    }
+    Console.Write("\n");
+}
+
+//16
+Console.WriteLine("\n(16)");
+for (int i = 0; i < vyska; i++)
+{
+    for (int j = 0; j < sirka; j++)
+    {
+        if (i <= vyska / 2 && j >= sirka / 2 - i - 1 && j <= sirka / 2 + i ||
+            i > vyska / 2 && j <= vyska - i + vyska / 2 - 1 && i <= vyska / 2 + j)
+        {
+            Console.Write("*");
+        }
+        else
+        {
+            Console.Write(" ");
+        }
+    }
+    Console.Write("\n");
+}
+
+//17
+Console.WriteLine("\n(17)");
+for (int i = 0; i < vyska; i++)
+{
+    for (int j = 0; j < sirka; j++)
+    {
+        if ((j + i) % 3 == 0)
+        {
+            Console.Write("*");
+        }
+        else
+        {
+            Console.Write(" ");
+        }
+    }
+    Console.Write("\n");
+}
+
+//18
+b = true;
+Console.WriteLine("\n(18)");
+for (int i = 0; i < vyska; i++)
+{
+    if (i % 3 == 0)
+    {
+        b = !b;
+    }
+    for (int j = 0; j < sirka; j++)
+    {
+        if ((!b && (j - i) % 3 == 0) || (b && (j + i) % 3 == 0 && j != 0))
+        {
+            Console.Write("*");
+        }
+        else
+        {
+            Console.Write(" ");
+        }
+    }
+    Console.Write("\n");
+}
+
+//19
+b = true;
+Console.WriteLine("\n(19)");
+for (int i = 0; i < vyska; i++)
+{
+    if (i == vyska / 2)
+    {
+        b = !b;
+    }
+    for (int j = 0; j < sirka; j++)
+    {
+        if ((b && j < sirka - i && i <= j) || (!b && j >= sirka - i - 1 && i >= j))
+        {
+            Console.Write("*");
+        }
+        else
+        {
+            Console.Write(" ");
+        }
+    }
+    Console.Write("\n");
+}
+
+//20
+b = true;
+Console.WriteLine("\n(20)");
+for (int i = 0; i < vyska; i++)
+{
+    for (int j = 0; j < sirka; j++)
+    {
+        if (j != 0 && j % 2 == 0)
+        {
+            b = !b;
+        }
+        if (b)
+        {
+            Console.Write("*");
+        }
+        else
+        {
+            Console.Write(" ");
+        }
+    }
+    if (i % 2 == 0)
+    {
+        b = !b;
     }
     Console.Write("\n");
 }
