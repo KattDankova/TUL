@@ -45,7 +45,7 @@ int entering_number_in_interval(int min, int max)
 }
 
 //Metoda pro vytvoreni randomu s minimalni a maximalni hodnotou
-int random(int min, int max)
+int own_random(int min, int max)
 {
     return min + rand() % (max + 1 - min);
 }
@@ -165,7 +165,7 @@ int main()
         guess = entering_number_in_interval(fingers, MAX_NUMBER_OF_FINGERS * 2);
 
         //PC tah
-        pc_fingers = random(0, MAX_NUMBER_OF_FINGERS);
+        pc_fingers = own_random(0, MAX_NUMBER_OF_FINGERS);
         max = 0;
 
         //Nastaveni maxima (aby kdyz zada napriklad 3, vedel ze maximum muze byt pouze 3+5=8)
@@ -177,7 +177,7 @@ int main()
         {
             max = pc_fingers + MAX_NUMBER_OF_FINGERS;
         }
-        int pc_guess = random(pc_fingers, max);
+        int pc_guess = own_random(pc_fingers, max);
 
         //Graficke znazorneni kola
         drawHand(fingers, PLAYER, guess);
