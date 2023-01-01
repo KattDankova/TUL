@@ -11,9 +11,6 @@ while (key == ConsoleKey.Enter)
     }
 
     int[] pole = new int[n];
-    int nejvyssi_cislo = 0;
-    int nejnizsi_cislo = 0;
-    int soucin = 1;
 
     for (int i = 0; i < pole.Length; i++)
     {
@@ -22,41 +19,18 @@ while (key == ConsoleKey.Enter)
             Console.WriteLine($"Zadejte {i + 1}. číslo : ");
             int.TryParse(Console.ReadLine(), out pole[i]);
         }
-        if (i == 0)
-        {
-            nejvyssi_cislo = pole[i];
-            nejnizsi_cislo = pole[i];
-        }
-        else if (nejvyssi_cislo < pole[i])
-        {
-            nejvyssi_cislo = pole[i];
-        }
-        else if (nejnizsi_cislo > pole[i])
-        {
-            nejnizsi_cislo = pole[i];
-        }
-
-        soucin *= pole[i];
     }
 
-    //Nejmenší společný násobek
-    int nsn = 0;
-    //Největší společný dělitel
-    int nsd = 0;
-
+    int nsd = pole[0];
     for (int i = 1; i < pole.Length; i++)
     {
-        int temp = pole[0];
-        temp = Delitel(pole[i], temp);
-        nsd = temp;
+        nsd = Delitel(pole[i], nsd);
     }
 
-    nsn = soucin / nsd;
+    int nsn = Nasobek(pole, 0);
 
     Console.WriteLine($"Největší společný dělitel je {nsd}");
-
     Console.WriteLine($"Nejmenší společný násobek je {nsn}");
-
 
     Console.WriteLine("\nPro opakovani stisknete ENTER");
     key = Console.ReadKey().Key;
@@ -67,4 +41,15 @@ int Delitel(int a, int b)
     if (a == 0)
         return b;
     return Delitel(b % a, a);
+}
+
+int Nasobek(int[] arr, int idx)
+{
+    if (idx == arr.Length - 1)
+    {
+        return arr[idx];
+    }
+    int a = arr[idx];
+    int b = Nasobek(arr, idx + 1);
+    return (a * b / Delitel(a, b));
 }
