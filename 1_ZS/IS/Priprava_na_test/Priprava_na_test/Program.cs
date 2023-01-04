@@ -635,7 +635,7 @@ while (gap > 0)
 //šipka
 int sirkaObdelniku = 1, odsazeni = 0;
 
-int prum = 37;
+int prum = 10;
 Console.WriteLine("\n\nŠipka:\n");
 for (int i = 0; i < prum; i++)
 {
