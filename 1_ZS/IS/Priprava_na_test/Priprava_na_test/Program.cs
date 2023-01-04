@@ -320,7 +320,7 @@ min = max = pole[0];
 int pocetMax = 1;
 int pocetMin = 1;
 int indexMax = 0;
-int indexMin = 0; 
+int indexMin = 0;
 for (int i = 1; i < pole.Length; i++)
 {
     if (pole[i] > max)
@@ -630,4 +630,46 @@ while (gap > 0)
     {
         gap = (int)(gap / 2.2);
     }
+}
+
+//šipka
+int sirkaObdelniku = 1, odsazeni = 0;
+
+int prum = 37;
+Console.WriteLine("\n\nŠipka:\n");
+for (int i = 0; i < prum; i++)
+{
+    if (i == 1)
+    {
+        sirkaObdelniku = i * 2 + 1;
+        odsazeni = prum - i - 1;
+    }
+    for (int j = 0; j < prum - i - 1; j++)
+    {
+        Console.Write("  ");
+    }
+    for (int j = 0; j < (i * 2) + 1; j++)
+    {
+        if (i > 1 && j == (prum - (prum - i - 1) - 1))
+            Console.Write("  ");
+        else
+            Console.Write("* ");
+    }
+    Console.Write("\n");
+}
+
+for (int i = 0; i < prum; i++)
+{
+    for (int j = 0; j < odsazeni; j++)
+    {
+        Console.Write("  ");
+    }
+    for (int j = 0; j < sirkaObdelniku; j++)
+    {
+        if (i == prum - 1 || j == 0 || j == sirkaObdelniku - 1)
+            Console.Write("* ");
+        else
+            Console.Write("  ");
+    }
+    Console.Write("\n");
 }
