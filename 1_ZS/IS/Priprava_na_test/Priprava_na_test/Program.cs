@@ -118,12 +118,13 @@ int fibonacci(int x)
 Random random = new Random();
 int[] pole = new int[10];
 
-int znamenko = random.Next(0, 2);
+int znamenko;
 for (int i = 0; i < pole.Length; i++)
 {
     pole[i] = random.Next(0, 20); // kladna
     pole[i] = -random.Next(0, 20); // zaporna
 
+    znamenko = random.Next(0, 2);
     //oboje
     pole[i] = random.Next(0, 20);
     if (znamenko == 0)
@@ -341,6 +342,15 @@ for (int i = 1; i < pole.Length; i++)
     if (pole[i] == min)
     {
         pocetMin++;
+    }
+}
+
+//Výpis pozic maxima / minima
+for (int i = 0; i < pole.Length; i++)
+{
+    if (pole[i] == max /*min*/)
+    {
+        Console.WriteLine("{0}, ", max /*min*/);
     }
 }
 
